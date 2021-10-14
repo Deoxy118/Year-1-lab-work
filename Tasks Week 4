@@ -1,0 +1,90 @@
+def table(input):
+    l = []
+    for i in input:
+        i = i.strip()
+        i = i.split(',')
+        distance = int(i[0])
+        cost = float(i[1])
+        l.append([distance,cost])
+    return l
+
+
+def PrintList(x):
+    for i in x:
+        print(i[0],"Miles, £",i[1])
+
+
+def getMinIndex(l,start,stop):
+    min_index = start
+    for i in range(start+1,stop):
+        if (l[i] < l[min_index]):
+            min_index = i
+    return min_index
+
+def swapElements(l,i,j):
+    temp = l[i]
+    l[i] = l[j]
+    l[j] = temp
+
+def selectSortDistance(l):
+    n = len(l)
+    for index in range(n):
+        min = getMinIndex(l,index,n)
+        swapElements(l,index,min)
+    return l
+
+
+filename = input("Enter the name of the file you'd like to open: ")
+file = open(filename,'r')
+x = table(file)
+selectSortDistance(x)
+PrintList(x)
+
+def table(input):
+    l = []
+    for i in input:
+        i = i.strip()
+        i = i.split(',')
+        distance = int(i[0])
+        cost = float(i[1])
+        l.append([distance,cost])
+    return l
+
+
+def PrintList(x):
+    for i in x:
+        print(i[0],"Miles, £",i[1])
+
+
+def getMinIndex(l,start,stop,j):
+    min_index = start
+    for i in range(start+1,stop):
+        if float(l[i][j] < l[min_index][j]):
+            min_index = i
+    return min_index
+
+def swapElements(l,i,j):
+    temp = l[i]
+    l[i] = l[j]
+    l[j] = temp
+
+def selectSortDistance(l):
+    n = len(l)
+    for index in range(n):
+        min = getMinIndex(l,index,n)
+        swapElements(l,index,min)
+    return l
+
+def selectSortPrice(l):
+    j = 1
+    n = len(l)
+    for index in range(n):
+        min = getMinIndex(l,index,n,j)
+        swapElements(l,index,min)
+    return l
+
+filename = input("Enter the name of the file you'd like to open: ")
+file = open(filename,'r')
+x = table(file)
+selectSortPrice(x)
+PrintList(x)
