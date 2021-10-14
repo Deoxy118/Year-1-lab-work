@@ -1,0 +1,51 @@
+//Task 1
+public class ReadingList {
+    String moduleCode;
+    Book[] books;
+
+    public ReadingList(String n, Book[] bks) {
+        moduleCode = n;
+        books = bks;
+    }
+
+    public String getModCode() {
+        return moduleCode;
+    }
+
+    public Book getBook(int n) {
+        return books[n];
+    }
+
+    public Book[] getAllBooks() {
+        return books;
+    }
+
+    public String toString() {
+        return String.format(getModCode());
+    }
+}
+// Task 2
+public class BookListUser {
+
+    public static Book findNewest(ReadingList rl) {
+        Book newest = new Book ("irrelevent", " something", 0000);
+        for (Book b : rl.getAllBooks()) {
+            System.out.println(b);
+            if (b.getYear() < newest.getYear()) {
+                newest = b;
+            }
+        }
+        return newest;
+    }
+
+    public static void main(String[] args) {
+        Book b1 = new Book("Java in a Nutshell, 7th edition","Evans and Flanagan", 2018);
+        Book b2 = new Book("Program Development in Java", "Liskov and Guttag", 2000);
+        Book b3 = new Book("Using UML, 2nd edition","Stevens and Pooley", 2006);
+
+        ReadingList rlist1 = new ReadingList("CO1003",new Book[] {b1,b2,b3});
+        System.out.println(rlist1);
+        Book newest = findNewest(rlist1);
+        System.out.printf("The newest book is %s%n",newest);
+    }
+}
